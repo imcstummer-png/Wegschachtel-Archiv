@@ -1,3 +1,19 @@
+/* ========================================
+   WEGSCHACHTEL ARCHIV
+   ======================================== */
+
+
+/* ---------- Farben & Grundeinstellungen ---------- */
+
+:root {
+    --background: #f3f0e9;
+    --text: #1d1d1b;
+    --muted: #68665f;
+    --accent: #6f1d2c;
+    --line: #c9c3b8;
+    --white: #ffffff;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,9 +21,14 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f5f3ef;
-    color: #222;
+    background: var(--background);
+    color: var(--text);
 }
+
+
+/* ========================================
+   STARTSEITE
+   ======================================== */
 
 header {
     padding: 80px 30px 50px;
@@ -21,7 +42,7 @@ header h1 {
 
 header p {
     margin-top: 12px;
-    color: #666;
+    color: var(--muted);
 }
 
 main {
@@ -37,6 +58,9 @@ h2 {
     font-size: 28px;
 }
 
+
+/* Jahreskarten */
+
 .year-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -45,17 +69,18 @@ h2 {
 
 .year-card,
 .memory-card {
-    background: white;
+    background: var(--white);
     border-radius: 14px;
     padding: 35px;
 }
 
 .year-card {
     text-decoration: none;
-    color: #222;
+    color: var(--text);
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+
     transition: transform 0.2s;
 }
 
@@ -67,7 +92,351 @@ h2 {
     margin-top: 0;
 }
 
+
+/* ========================================
+   JAHRESSEITEN
+   ======================================== */
+
+.archive-header {
+    width: min(1000px, 90%);
+    margin: 0 auto;
+
+    padding: 50px 0 40px;
+
+    text-align: left;
+}
+
+.archive-header h1 {
+    font-size: 64px;
+    margin: 10px 0;
+}
+
+.archive-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+
+    color: var(--text);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+
+/* Eventübersicht auf Jahresseite */
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.event-card {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.event-placeholder {
+    height: 300px;
+
+    background: #ddd8d0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    letter-spacing: 4px;
+}
+
+.event-info {
+    padding-top: 15px;
+}
+
+.event-info h3 {
+    margin: 5px 0;
+    font-size: 28px;
+}
+
+.event-meta {
+    color: var(--muted);
+}
+
+
+/* ========================================
+   EVENTSEITE
+   ======================================== */
+
+.event-page {
+    background: var(--background);
+    color: var(--text);
+}
+
+
+/* ---------- Navigation ---------- */
+
+.archive-nav {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+
+    padding: 30px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.archive-nav div {
+    display: flex;
+    gap: 10px;
+}
+
+.archive-nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.archive-nav a:hover {
+    color: var(--accent);
+}
+
+
+/* ---------- Event Header ---------- */
+
+.event-header {
+    width: min(1200px, 90%);
+
+    margin: 65px auto 55px;
+
+    padding: 0;
+    text-align: left;
+}
+
+.event-number {
+    margin-bottom: 15px;
+
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    color: var(--accent);
+}
+
+.event-header h1 {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+
+    font-size: clamp(70px, 11vw, 150px);
+    line-height: 0.9;
+
+    color: var(--text);
+}
+
+
+/* Kleine Burgundy-Linie unter Eventtitel */
+
+.event-header h1::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 3px;
+
+    margin-top: 25px;
+
+    background: var(--accent);
+}
+
+
+.event-details {
+    display: flex;
+    gap: 30px;
+
+    margin-top: 30px;
+
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    color: var(--accent);
+}
+
+.event-intro {
+    max-width: 450px;
+
+    margin-top: 35px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* ---------- Trennlinie vor Fotogalerie ---------- */
+
+.archive-divider {
+    margin-top: 55px;
+    padding: 12px 0;
+
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--line);
+
+    display: flex;
+    justify-content: space-between;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    color: var(--accent);
+}
+
+
+/* ========================================
+   FOTOARCHIV
+   ======================================== */
+
+.event-content {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+}
+
+.photo-archive {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    column-gap: 18px;
+    row-gap: 45px;
+
+    align-items: start;
+}
+
+
+/* Grundstil der Fotos */
+
+.archive-photo {
+    margin: 0;
+}
+
+.archive-photo img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+    object-fit: cover;
+}
+
+
+/* Verschiedene Bildgrößen */
+
+.photo-large {
+    grid-column: span 7;
+}
+
+.photo-medium {
+    grid-column: span 5;
+}
+
+.photo-small {
+    grid-column: span 4;
+}
+
+
+/* Leichte Scrapbook-Unregelmäßigkeit */
+
+.portrait-photo {
+    grid-column: span 4;
+    max-width: 360px;
+    justify-self: center;
+    margin-top: 35px;
+}
+
+.archive-photo:nth-child(3) {
+    margin-left: 15px;
+}
+
+.archive-photo:nth-child(5) {
+    margin-top: 30px;
+}
+
+
+/* Bildunterschriften */
+
+.archive-photo figcaption {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 9px;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    color: var(--accent);
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.archive-footer {
+    width: min(1200px, 90%);
+
+    margin: 160px auto 50px;
+    padding-top: 25px;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+    justify-content: space-between;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.archive-footer p {
+    margin: 0;
+}
+
+.archive-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.archive-footer a:hover {
+    color: var(--accent);
+}
+
+
+/* ========================================
+   HANDY
+   ======================================== */
+
 @media (max-width: 700px) {
+
+    /* Startseite */
+
     .year-grid {
         grid-template-columns: 1fr;
     }
@@ -75,4 +444,201 @@ h2 {
     header h1 {
         font-size: 36px;
     }
+
+
+    /* Jahresseite */
+
+    .archive-header h1 {
+        font-size: 46px;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Eventseite */
+
+    .archive-nav {
+        padding-top: 20px;
+    }
+
+    .event-header {
+        margin-top: 50px;
+        margin-bottom: 45px;
+    }
+
+    .event-header h1 {
+        font-size: 70px;
+    }
+
+    .event-details {
+        gap: 15px;
+    }
+
+    .archive-divider {
+        margin-top: 40px;
+    }
+
+    .lightbox-content {
+    width: 85vw;
+}
+
+.lightbox-arrow {
+    padding: 10px;
+}
+
+.lightbox-prev {
+    left: 2px;
+}
+
+.lightbox-next {
+    right: 2px;
+}
+
+.lightbox-close {
+    top: 15px;
+    right: 18px;
+}
+
+
+    /* Fotogalerie */
+
+    .photo-archive {
+        grid-template-columns: 1fr;
+        row-gap: 55px;
+    }
+
+    .photo-large,
+    .photo-medium,
+    .photo-small {
+        grid-column: 1;
+
+        width: 100%;
+        margin: 0;
+    }
+
+    .archive-photo:nth-child(2),
+    .archive-photo:nth-child(3),
+    .archive-photo:nth-child(5) {
+        margin: 0;
+    }
+
+
+    /* Footer */
+
+    .archive-footer {
+        margin-top: 100px;
+    }
+}
+
+/* ========================================
+   LIGHTBOX
+   ======================================== */
+
+.archive-photo img {
+    cursor: pointer;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(20, 18, 17, 0.96);
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    width: min(1100px, 78vw);
+    height: 88vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: calc(88vh - 45px);
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.lightbox-info {
+    width: 100%;
+    margin-top: 12px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #e8e4dc;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.lightbox-caption {
+    color: #b46a78;
+}
+
+.lightbox-close {
+    position: absolute;
+
+    top: 25px;
+    right: 35px;
+
+    border: 0;
+    background: none;
+
+    color: #f3f0e9;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px;
+
+    cursor: pointer;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: 0;
+    background: none;
+
+    color: #f3f0e9;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    padding: 20px;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+    color: var(--accent);
 }
