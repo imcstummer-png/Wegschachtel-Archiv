@@ -53,5 +53,15 @@ const allEvents = [
         displayDate: "2024-12-06",
         location: "Palais Kaufmännischer Verein, LINZ",
         fileNumber: "006"
+    },
+    {
+        title: "England",
+        slug: "england",
+        year: 2024,
+        startDate: "2024-10-10",
+        endDate: "2024-10-15",
+        displayDate: "10.-15. Oktober 2024",
+        location: "Eastbourne, ENGLAND",
+        fileNumber: "007"
     }
 ];

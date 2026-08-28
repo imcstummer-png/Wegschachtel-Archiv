@@ -382,6 +382,37 @@ description = input(
     "Kurze Beschreibung: "
 ).strip()
 
+def get_next_file_number():
+
+    registry_file = (
+        PROJECT_DIR
+        / "data"
+        / "events.js"
+    )
+
+    if not registry_file.exists():
+        return "001"
+
+    content = registry_file.read_text(
+        encoding="utf-8"
+    )
+
+    numbers = re.findall(
+        r'fileNumber:\s*"(\d+)"',
+        content
+    )
+
+    if not numbers:
+        return "001"
+
+    highest_number = max(
+        int(number)
+        for number in numbers
+    )
+
+    return str(
+        highest_number + 1
+    ).zfill(3)
 
 file_number = get_next_file_number()
 
