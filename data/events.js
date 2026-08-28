@@ -63,5 +63,35 @@ const allEvents = [
         displayDate: "10.-15. Oktober 2024",
         location: "Eastbourne, ENGLAND",
         fileNumber: "007"
+    },
+    {
+        title: "Hoazing 2025",
+        slug: "hoazing-2025",
+        year: 2025,
+        startDate: "2025-08-15",
+        endDate: "2025-08-17",
+        displayDate: "15.-17. August 2025",
+        location: "Hoazing, HARTKIRCHEN",
+        fileNumber: "008"
+    },
+    {
+        title: "Axberg",
+        slug: "axberg",
+        year: 2026,
+        startDate: "2026-08-08",
+        endDate: "2026-08-08",
+        displayDate: "2026-08-08",
+        location: "Axberg, KIRCHBERG-THENING",
+        fileNumber: "009"
+    },
+    {
+        title: "Festl Feldkirchen 2026",
+        slug: "festl-feldkirchen-2026",
+        year: 2026,
+        startDate: "2026-08-01",
+        endDate: "2026-08-01",
+        displayDate: "2026-08-01",
+        location: "Feldkirchner Badeseen, FELDKIRCHEN",
+        fileNumber: "010"
     }
 ];

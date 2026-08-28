@@ -1,6 +1,31 @@
 const COMMENTS_API =
     "https://wegschachtel-comments-api.i-m-c-stummer.workers.dev";
 
+function getClientId() {
+
+    let clientId =
+        localStorage.getItem(
+            "wegschachtel-client-id"
+        );
+
+    if (!clientId) {
+
+        clientId =
+            crypto.randomUUID();
+
+        localStorage.setItem(
+            "wegschachtel-client-id",
+            clientId
+        );
+    }
+
+    return clientId;
+}
+
+
+const clientId =
+    getClientId();
+
 
 const commentForm =
     document.querySelector("#comment-form");
@@ -24,7 +49,58 @@ const commentParams =
 const commentEventSlug =
     commentParams.get("event");
 
+async function toggleLike(
+    commentId,
+    currentlyLiked
+) {
 
+    const method =
+        currentlyLiked
+            ? "DELETE"
+            : "POST";
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${COMMENTS_API}/likes`,
+                {
+                    method: method,
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        commentId:
+                            commentId,
+
+                        clientId:
+                            clientId
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+            throw new Error(
+                data.error
+                || "Like konnte nicht gespeichert werden."
+            );
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+    }
+}
 /* ========================================
    KOMMENTARE LADEN
    ======================================== */
@@ -44,7 +120,7 @@ async function loadComments() {
 
         const response =
             await fetch(
-                `${COMMENTS_API}/comments?event=${encodeURIComponent(commentEventSlug)}`
+                `${COMMENTS_API}/comments?event=${encodeURIComponent(commentEventSlug)}&clientId=${encodeURIComponent(clientId)}`
             );
 
 
@@ -140,7 +216,6 @@ function createCommentElement(
     const article =
         document.createElement("article");
 
-
     article.className =
         "comment-item";
 
@@ -162,19 +237,24 @@ function createCommentElement(
 
         </div>
 
-
         <p class="comment-text"></p>
 
+        <div class="comment-actions">
 
-        <button
-            class="reply-button"
-            type="button">
-            REPLY
-        </button>
+            <button
+                class="like-button"
+                type="button">
+            </button>
 
+            <button
+                class="reply-button"
+                type="button">
+                REPLY
+            </button>
+
+        </div>
 
         <div class="reply-form-container"></div>
-
 
         <div class="comment-replies"></div>
     `;
@@ -192,6 +272,83 @@ function createCommentElement(
         comment.body;
 
 
+    /* -------------------------
+       LIKES
+       ------------------------- */
+
+    const likeButton =
+        article.querySelector(
+            ".like-button"
+        );
+
+
+    let liked =
+        Number(comment.liked_by_client) === 1;
+
+
+    let likeCount =
+        Number(comment.like_count || 0);
+
+
+    function updateLikeButton() {
+
+        likeButton.textContent =
+            `${liked ? "♥" : "♡"} ${likeCount}`;
+
+    }
+
+
+    updateLikeButton();
+
+
+    likeButton.addEventListener(
+        "click",
+        async () => {
+
+            try {
+
+                await toggleLike(
+                    comment.id,
+                    liked
+                );
+
+
+                if (liked) {
+
+                    liked = false;
+
+                    likeCount =
+                        Math.max(
+                            0,
+                            likeCount - 1
+                        );
+
+                } else {
+
+                    liked = true;
+
+                    likeCount++;
+
+                }
+
+
+                updateLikeButton();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        }
+    );
+
+
+    /* -------------------------
+       ANTWORTEN
+       ------------------------- */
+
     const repliesContainer =
         article.querySelector(
             ".comment-replies"
@@ -202,7 +359,6 @@ function createCommentElement(
 
         const replyElement =
             document.createElement("div");
-
 
         replyElement.className =
             "comment-reply";
@@ -247,6 +403,10 @@ function createCommentElement(
     });
 
 
+    /* -------------------------
+       REPLY BUTTON
+       ------------------------- */
+
     const replyButton =
         article.querySelector(
             ".reply-button"
@@ -274,6 +434,7 @@ function createCommentElement(
 
     return article;
 }
+
 
 
 /* ========================================
