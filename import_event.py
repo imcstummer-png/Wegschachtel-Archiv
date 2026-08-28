@@ -383,9 +383,11 @@ description = input(
 ).strip()
 
 
-file_number = input(
-    "Archivnummer (z.B. 003): "
-).strip()
+file_number = get_next_file_number()
+
+print(
+    f"Archivnummer automatisch vergeben: {file_number}"
+)
 
 
 event_slug = create_slug(
@@ -878,3 +880,34 @@ print()
 print(
     "Cloudflare R2 Upload abgeschlossen."
 )
+def get_next_file_number():
+
+    registry_file = (
+        PROJECT_DIR
+        / "data"
+        / "events.js"
+    )
+
+    if not registry_file.exists():
+        return "001"
+
+    content = registry_file.read_text(
+        encoding="utf-8"
+    )
+
+    numbers = re.findall(
+        r'fileNumber:\s*"(\d+)"',
+        content
+    )
+
+    if not numbers:
+        return "001"
+
+    highest_number = max(
+        int(number)
+        for number in numbers
+    )
+
+    return str(
+        highest_number + 1
+    ).zfill(3)

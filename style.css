@@ -23,26 +23,7 @@ body {
     font-family: Arial, sans-serif;
     background: var(--background);
     color: var(--text);
-}
-
-
-/* ========================================
-   STARTSEITE
-   ======================================== */
-
-header {
-    padding: 80px 30px 50px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 48px;
-}
-
-header p {
-    margin-top: 12px;
-    color: var(--muted);
+    padding-bottom: 80px;
 }
 
 main {
@@ -50,12 +31,255 @@ main {
     margin: 0 auto;
 }
 
-section {
-    margin-bottom: 60px;
+
+/* ========================================
+   STARTSEITE
+   ======================================== */
+/* ========================================
+   STARTSEITEN HEADER
+   ======================================== */
+
+.home-header {
+    padding: 90px 30px 70px;
+    text-align: center;
 }
 
-h2 {
-    font-size: 28px;
+.home-header .archive-label {
+    margin-bottom: 18px;
+
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+
+    color: var(--accent);
+}
+
+/* ========================================
+   STARTSEITE – MANUSCRIPT HEADER
+   ======================================== */
+
+/* ========================================
+   STARTSEITEN HEADER
+   ======================================== */
+
+.home-header {
+    padding: 90px 30px 70px;
+    text-align: center;
+}
+
+.home-eyebrow {
+    margin: 0 0 28px;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    color: var(--accent);
+}
+
+
+/* Ornament-Zeilen */
+
+.ornament-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    width: min(1120px, 92%);
+    margin: 0 auto;
+
+    color: var(--accent);
+}
+
+.ornament-row::before,
+.ornament-row::after {
+    content: "";
+
+    flex: 1;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            var(--accent) 18%,
+            var(--accent) 82%,
+            transparent 100%
+        );
+
+    opacity: 0.75;
+}
+
+.ornament-row span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    line-height: 1;
+
+    color: var(--accent);
+}
+
+.top-ornament {
+    margin-bottom: 34px;
+}
+
+.bottom-ornament {
+    margin-top: 26px;
+    margin-bottom: 28px;
+}
+
+
+/* Titelblock */
+
+.manuscript-title {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.manuscript-title h1 {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+
+    line-height: 0.92;
+
+    color: var(--text);
+}
+
+
+/* erste Zeile: W + egeschachtel */
+
+.title-line {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* großes Initial */
+
+.illuminated-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 100px;
+
+    font-size: 90px;
+    line-height: 1;
+
+    color: var(--background);
+    background: var(--accent);
+
+    border: 1px solid var(--accent);
+
+    flex: 0 0 auto;
+}
+
+
+/* Rest von Wegschachtel */
+
+.title-rest {
+    font-size: clamp(62px, 9vw, 118px);
+    line-height: 0.92;
+}
+
+
+/* zweite Zeile */
+
+.title-archive {
+    display: block;
+
+    margin-top: 16px;
+    margin-left: 110px;
+
+    text-align: right;
+
+    font-size: clamp(42px, 5vw, 72px);
+    font-style: italic;
+
+    color: var(--accent);
+}
+
+
+/* Untertitel */
+
+.home-subtitle {
+    margin-top: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-style: italic;
+
+    color: var(--muted);
+}
+
+
+/* ========================================
+   HANDY
+   ======================================== */
+
+@media (max-width: 700px) {
+
+    .home-header {
+        padding: 60px 20px 45px;
+    }
+
+    .home-eyebrow {
+        margin-bottom: 20px;
+
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .top-ornament {
+        margin-bottom: 22px;
+    }
+
+    .bottom-ornament {
+        margin-top: 18px;
+        margin-bottom: 20px;
+    }
+
+    .ornament-row {
+        gap: 12px;
+    }
+
+    .ornament-row span {
+        font-size: 18px;
+    }
+
+    .title-line {
+        gap: 6px;
+    }
+
+    .illuminated-letter {
+        width: 64px;
+        height: 64px;
+
+        font-size: 56px;
+    }
+
+    .title-rest {
+        font-size: 52px;
+    }
+
+    .title-archive {
+        margin-top: 10px;
+        margin-left: 70px;
+
+        font-size: 36px;
+    }
+
+    .home-subtitle {
+        font-size: 16px;
+    }
 }
 
 
@@ -63,7 +287,7 @@ h2 {
 
 .year-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
 }
 
@@ -680,3 +904,163 @@ h2 {
 
     color: var(--muted);
 }    
+
+/* ========================================
+   RANDOM MEMORY
+   ======================================== */
+
+.random-section {
+    margin: 80px 0;
+
+    padding: 35px 0;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.random-memory-button {
+    margin-top: 12px;
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 4vw, 48px);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.random-memory-button:hover {
+    color: var(--accent);
+
+    transform: translateX(5px);
+}
+
+/* ========================================
+   RÜCKBLICKE
+   ======================================== */
+
+.memory-section {
+    margin-top: 35px;
+    margin-bottom: 100px;
+}
+
+.memory-section .archive-label {
+    margin-bottom: 8px;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+
+    color: var(--accent);
+}
+
+.memory-heading {
+    margin: 0 0 28px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 42px;
+    font-weight: normal;
+
+    color: var(--text);
+}
+
+.memory-card {
+    padding: 42px 50px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+    border-left: 3px solid var(--accent);
+}
+
+.memory-card h3 {
+    margin: 0 0 18px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: normal;
+
+    color: var(--accent);
+}
+
+.memory-card p {
+    margin: 0;
+
+    font-size: 17px;
+    color: var(--muted);
+}
+
+/* ========================================
+   RANDOM PHOTO
+   ======================================== */
+
+.random-photo-section {
+    margin: 90px 0;
+}
+
+.random-photo-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: var(--accent);
+}
+
+.random-photo-link {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.random-photo-frame {
+    width: 100%;
+    max-height: 560px;
+
+    overflow: hidden;
+
+    background: #ddd8d0;
+}
+
+.random-photo-frame img {
+    width: 100%;
+    height: 100%;
+    max-height: 560px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+.random-photo-link:hover img {
+    transform: scale(1.015);
+}
+
+.random-photo-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    color: var(--accent);
+}
