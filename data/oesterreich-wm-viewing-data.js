@@ -6,7 +6,7 @@ window.eventData = {
     endDate: "2026-06-22",
     displayDate: "2026-06-22",
     location: "Johanna, ZWIELEHNERHOF",
-    description: "Public Viewing des WM Spiels Österreich gegen Argentinien bei den Mittermairs. Kulinarisch untermahlt von argentinischem Steak. Leider verloren aber der Einsatz war da",
+    description: "Public Viewing des WM Spiels Österreich gegen Argentinien bei den Mittermairs. Kulinarisch untermahlt von argentinischem Steak und jimmytschuarri (oda so). Leider verloren aber der Einsatz war da.",
     fileNumber: "012",
 
     photos: [
