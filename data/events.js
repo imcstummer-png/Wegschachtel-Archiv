@@ -93,5 +93,35 @@ const allEvents = [
         displayDate: "2026-08-01",
         location: "Feldkirchner Badeseen, FELDKIRCHEN",
         fileNumber: "010"
+    },
+    {
+        title: "Party Theresa",
+        slug: "party-theresa",
+        year: 2025,
+        startDate: "2025-06-21",
+        endDate: "2025-06-21",
+        displayDate: "2025-06-21",
+        location: "Gärtnerei Dobertzberger, HARTKIRCHEN",
+        fileNumber: "011"
+    },
+    {
+        title: "Österreich WM-Viewing",
+        slug: "oesterreich-wm-viewing",
+        year: 2026,
+        startDate: "2026-06-22",
+        endDate: "2026-06-22",
+        displayDate: "2026-06-22",
+        location: "Johanna, ZWIELEHNERHOF",
+        fileNumber: "012"
+    },
+    {
+        title: "Fasching 2026",
+        slug: "fasching-2026",
+        year: 2026,
+        startDate: "2026-02-13",
+        endDate: "2026-02-13",
+        displayDate: "2026-02-13",
+        location: "Zwielehnerhof, ALKOVEN",
+        fileNumber: "013"
     }
 ];
